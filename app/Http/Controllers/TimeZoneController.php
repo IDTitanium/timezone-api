@@ -14,17 +14,17 @@ class TimeZoneController extends Controller
     {
         try {
             if(!$request->country_code) {
-                return $this->sendApiResponse(Response::HTTP_UNPROCESSABLE_ENTITY, __('Country code is required'));
+                return $this->formatApiResponse(Response::HTTP_UNPROCESSABLE_ENTITY, __('Country code is required'));
             }
 
             if(Str::length($request->country_code) > 2) {
-                return $this->sendApiResponse(Response::HTTP_UNPROCESSABLE_ENTITY, __('Country code should be two letters'));
+                return $this->formatApiResponse(Response::HTTP_UNPROCESSABLE_ENTITY, __('Country code should be two letters'));
             }
 
             $data = Zone::getTimezoneByCountry($request->country_code);
-            return $this->sendApiResponse(Response::HTTP_OK, __('Zones fetched successfully'), $data);
+            return $this->formatApiResponse(Response::HTTP_OK, __('Timezones fetched successfully'), $data);
         } catch (Exception $e) {
-            return $this->sendApiResponse(Response::HTTP_SERVICE_UNAVAILABLE, __('Timezone API is currently down, we are working on it'));
+            return $this->formatApiResponse(Response::HTTP_SERVICE_UNAVAILABLE, __('Timezone API is currently down, we are working on it'));
         }
     }
 }
