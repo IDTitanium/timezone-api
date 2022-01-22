@@ -24,7 +24,7 @@ class TimeZoneController extends Controller
             $data = Zone::getTimezoneByCountry($request->country_code);
             return $this->sendApiResponse(Response::HTTP_OK, __('Zones fetched successfully'), $data);
         } catch (Exception $e) {
-            return $this->sendApiResponse(Response::HTTP_SERVICE_UNAVAILABLE, __('Timezone zone is currently down, we are working on it'));
+            return $this->sendApiResponse(Response::HTTP_SERVICE_UNAVAILABLE, __('Timezone API is currently down, we are working on it'));
         }
     }
 }
