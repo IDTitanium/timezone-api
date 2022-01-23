@@ -14,7 +14,7 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return 'Timezone API: 200 OK';
 });
 
 $router->get('/timezones', 'TimeZoneController@index');
